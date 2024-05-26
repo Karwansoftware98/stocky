@@ -1,16 +1,10 @@
 {
     "private": true,
     "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
         "serve": "vue-cli-service serve src/main.js",
-        "build": "vue-cli-service build",
+        "build": "vite build",
         "start": "vue-cli-service serve",
-        "production": "mix --production"
+        "dev": "vite"
     },
     "dependencies": {
         "@johmun/vue-tags-input": "^2.1.0",
