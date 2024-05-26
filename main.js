@@ -40,7 +40,8 @@ Vue.use(VueCookie);
 import VueExcelXlsx from "vue-excel-xlsx";
 Vue.use(VueExcelXlsx);
 
-window.axios = require('axios');
+import axios from 'axios';
+window.axios = axios;
 window.axios.defaults.baseURL = '/api/';
 
 window.axios.defaults.withCredentials = true;
