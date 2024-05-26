@@ -220,7 +220,7 @@
 </template>
 <script>
 import Util from "./../../../utils";
-// import Sidebar from "./Sidebar";
+// import Sidebar from "./Sidebar.vue";
 import { isMobile } from "mobile-device-detect";
 import { mapGetters, mapActions } from "vuex";
 import { mixin as clickaway } from "vue-clickaway";

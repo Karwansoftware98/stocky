@@ -54,7 +54,8 @@ Object.keys(rules).forEach(rule => {
 Vue.component("ValidationObserver", ValidationObserver);
 Vue.component('ValidationProvider', ValidationProvider);
 
-window.axios = require('axios');
+import axios from 'axios';
+window.axios = axios;
 window.axios.defaults.baseURL = '';
 
 window.axios.defaults.withCredentials = true;

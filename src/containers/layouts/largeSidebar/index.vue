@@ -21,9 +21,9 @@
 </template>
 
 <script>
-import Sidebar from "./Sidebar";
-import TopNav from "./TopNav";
-import appFooter from "../common/footer";
+import Sidebar from "./Sidebar.vue";
+import TopNav from "./TopNav.vue";
+import appFooter from "../common/footer.vue";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
