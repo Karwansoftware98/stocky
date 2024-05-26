@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunk"]=self["webpackChunk"]||[]).push([[554],{37741:(e,r,u)=>{u.r(r),u.d(r,{default:()=>f});var n=u(20641);function t(e,r){const u=(0,n.g2)("router-view");return(0,n.uX)(),(0,n.Wv)(u)}var s=u(66262);const c={},a=(0,s.A)(c,[["render",t]]),f=a}}]);
+//# sourceMappingURL=People.e5f66fe0.js.map

@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunk"]=self["webpackChunk"]||[]).push([[8834],{57645:(e,r,u)=>{u.r(r),u.d(r,{default:()=>f});var n=u(20641);function t(e,r){const u=(0,n.g2)("router-view");return(0,n.uX)(),(0,n.Wv)(u)}var s=u(66262);const c={},a=(0,s.A)(c,[["render",t]]),f=a}}]);
+//# sourceMappingURL=employees.2d74a44f.js.map
