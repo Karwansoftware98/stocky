@@ -990,7 +990,7 @@
 </template>
 
 <script>
-import Topnav from "./TopNav";
+import Topnav from "./TopNav.vue";
 import { isMobile } from "mobile-device-detect";
 
 import { mapGetters, mapActions } from "vuex";
