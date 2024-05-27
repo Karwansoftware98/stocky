@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Storage;
 
 //------------------------------------------------------------------\\
 
-Route::get('/', function () {
-   return view('welcome');
-});
+// Route::get('/', function () {
+//    return view('welcome');
+// });
 Route::post('/login', [
     'uses' => 'Auth\LoginController@login',
     'middleware' => 'Is_Active',
