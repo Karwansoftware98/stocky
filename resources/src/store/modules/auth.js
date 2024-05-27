@@ -1,115 +1,116 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import axios from 'axios'
-import router from "./../../router";
-import store from '../../store/index.js'
-import { i18n } from "../../plugins/i18n";
+import { createStore } from "vuex";
+import axios from "axios";
+import VueI18n from "vue-i18n";
+import messages from "../../translations";
+// Create the Vue app instance
 
-
-Vue.use(Vuex)
-
-
+const i18n = new VueI18n({
+    locale: "en",
+    fallbackLocale: "en",
+    messages,
+});
 const state = {
-    isAuthenticated:false,
-    Permissions: null,
+    isAuthenticated: false,
+    permissions: null,
     user: {},
     loading: false,
     error: null,
-    notifs:0,
-    Default_Language:'en',
+    notifs: 0,
+    defaultLanguage: "en",
 };
 
-
 const getters = {
-    isAuthenticated: state => state.isAuthenticated,
-    currentUser: state => state.user,
-    currentUserPermissions: state => state.Permissions,
-    loading: state => state.loading,
-    notifs_alert: state => state.notifs,
-    DefaultLanguage: state => state.Default_Language,
-    error: state => state.error
+    isAuthenticated: (state) => state.isAuthenticated,
+    currentUser: (state) => state.user,
+    currentUserPermissions: (state) => state.permissions,
+    loading: (state) => state.loading,
+    notifsAlert: (state) => state.notifs,
+    defaultLanguage: (state) => state.defaultLanguage,
+    error: (state) => state.error,
 };
 
 const mutations = {
-    setLoading(state, data) {
-        state.loading = data;
-        state.error = null;
+    setLoading(state, loading) {
+        state.loading = loading;
+        if (loading) {
+            state.error = null;
+        }
     },
-    setError(state, data) {
-        state.error = data;
-        state.loggedInUser = null;
+    setError(state, error) {
+        state.error = error;
         state.loading = false;
     },
     clearError(state) {
         state.error = null;
     },
-   
-    setPermissions(state, Permissions) {
-        state.Permissions = Permissions;
+    setPermissions(state, permissions) {
+        state.permissions = permissions;
     },
-
-   
     setUser(state, user) {
         state.user = user;
+        state.isAuthenticated = !!user;
     },
-
-
-    SetDefaultLanguage(state, Language) {
-        i18n.locale = Language;
-        store.dispatch("language/setLanguage", Language);
-        state.Default_Language = Language;
+    setDefaultLanguage(state, language) {
+        i18n.global.locale = language; // Adjusted for Vue 3 i18n
+        state.defaultLanguage = language;
     },
-
-    Notifs_alert(state, notifs) {
+    setNotifs(state, notifs) {
         state.notifs = notifs;
     },
-
-
     logout(state) {
         state.user = null;
-        state.Permissions = null;
-        state.loggedInUser = null;
+        state.permissions = null;
+        state.isAuthenticated = false;
         state.loading = false;
         state.error = null;
+        state.notifs = 0;
+        state.defaultLanguage = "en";
     },
 };
 
 const actions = {
+    async refreshUserPermissions({ commit }) {
+        commit("setLoading", true);
+        try {
+            const response = await axios.get("/get_user_auth");
+            const {
+                permissions,
+                user,
+                notifs,
+                user: { default_language },
+            } = response.data;
 
-    async refreshUserPermissions(context) {
-
-        await axios.get("get_user_auth").then((userAuth) => {
-            let Permissions = userAuth.data.permissions
-            let user = userAuth.data.user
-            let notifs = userAuth.data.notifs
-            let default_language = userAuth.data.user.default_language
-
-            context.commit('setPermissions', Permissions)
-            context.commit('setUser', user)
-            context.commit('Notifs_alert', notifs)
-
-            context.commit('SetDefaultLanguage', default_language)
-        }).catch(() => {
-            context.commit('setPermissions', null)
-            context.commit('setallmodules', null)
-            context.commit('setUser', null)
-            context.commit('Notifs_alert', null)
-            context.commit('SetDefaultLanguage', 'en')
-        });
+            commit("setPermissions", permissions);
+            commit("setUser", user);
+            commit("setNotifs", notifs);
+            commit("setDefaultLanguage", default_language);
+        } catch (error) {
+            commit("setError", error.message);
+            commit("setPermissions", null);
+            commit("setUser", null);
+            commit("setNotifs", 0);
+            commit("setDefaultLanguage", "en");
+        } finally {
+            commit("setLoading", false);
+        }
     },
-
-    logout({ commit }) {
-
-        axios({method:'post',  url: '/logout', baseURL: '' })
-          .then((userData) => {
-            window.location.href='/login';
-        })
+    async logout({ commit }) {
+        commit("setLoading", true);
+        try {
+            await axios.post("/logout");
+            commit("logout");
+            window.location.href = "/login";
+        } catch (error) {
+            commit("setError", error.message);
+        } finally {
+            commit("setLoading", false);
+        }
     },
 };
 
-export default {
+export default createStore({
     state,
     getters,
     actions,
-    mutations
-};
+    mutations,
+});

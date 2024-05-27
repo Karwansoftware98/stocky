@@ -837,8 +837,8 @@
 
 
 <script>
-import { mapActions, mapGetters } from "vuex";
-import Datepicker from "vuejs-datepicker";
+import { mapGetters } from "vuex";
+import Datepicker from 'vue3-datepicker'
 import NProgress from "nprogress";
 
 export default {

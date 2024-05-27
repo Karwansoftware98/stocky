@@ -221,13 +221,13 @@
     </div>
 
   </div>
-  
+
   <!-- ============ Body content End ============= -->
 </template>
 <script>
 import { mapGetters } from "vuex";
 
-import ECharts from "vue-echarts/components/ECharts.vue";
+import ECharts from "vue-echarts";
 
 // import ECharts modules manually to reduce bundle size
 import "echarts/lib/chart/pie";

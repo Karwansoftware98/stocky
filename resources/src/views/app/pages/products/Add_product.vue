@@ -409,7 +409,7 @@
                 </div>
               </b-row>
             </b-card>
-           
+
             <b-card class="mt-3">
               <b-row>
                 <!-- Product_Has_Imei_Serial_number -->
@@ -450,7 +450,7 @@
               <div class="card-body">
                 <b-row class="form-group">
                   <b-col md="12 mb-5">
-                    <div
+                    <!-- <div
                       id="my-strictly-unique-vue-upload-multiple-image"
                       class="d-flex justify-content-center"
                     >
@@ -468,7 +468,7 @@
                       idUpload="myIdUpload"
                       :showEdit="false"
                       />
-                    </div>
+                    </div> -->
                   </b-col>
                 </b-row>
               </div>
@@ -488,7 +488,7 @@
 
 
 <script>
-import VueUploadMultipleImage from "vue-upload-multiple-image";
+// import VueUploadMultipleImage from "vue-upload-multiple-image";
 import VueTagsInput from "@johmun/vue-tags-input";
 import NProgress from "nprogress";
 
@@ -576,7 +576,7 @@ export default {
       });
     },
 
-    
+
 
     add_variant(tag) {
       if (
@@ -603,13 +603,13 @@ export default {
               "Please Enter the Variant",
               this.$t("Warning")
             );
-            
+
           }
       }
     },
     //-----------------------------------Delete variant------------------------------\\
     delete_variant(var_id) {
-      
+
       for (var i = 0; i < this.variants.length; i++) {
         if (var_id === this.variants[i].var_id) {
           this.variants.splice(i, 1);
@@ -695,7 +695,7 @@ export default {
         self.product.is_variant = false;
       }
 
-           
+
       // append objet product
       Object.entries(self.product).forEach(([key, value]) => {
           self.data.append(key, value);
@@ -706,7 +706,7 @@ export default {
       if (self.variants.length) {
         self.data.append("variants", JSON.stringify(self.variants));
       }
-      
+
       //append array images
       if (self.images.length > 0) {
         for (var k = 0; k < self.images.length; k++) {

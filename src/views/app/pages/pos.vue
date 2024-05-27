@@ -115,7 +115,7 @@
                 <i title="sa" class="flag-icon flag-icon-squared flag-icon-kr"></i>
                 <span class="title-lang">Korean</span>
               </a>
-             
+
               <a @click="SetLocal('ba')">
                 <i title="sa" class="flag-icon flag-icon-squared flag-icon-bd"></i>
                 <span class="title-lang">Bangla</span>
@@ -242,7 +242,7 @@
                                   <span>{{detail.code}}</span>
                                   <br>
                                   <span class="badge badge-success">{{detail.name}}</span>
-                                  <i v-if="currentUserPermissions && currentUserPermissions.includes('edit_product_sale')" 
+                                  <i v-if="currentUserPermissions && currentUserPermissions.includes('edit_product_sale')"
                                     @click="Modal_Updat_Detail(detail)" class="i-Edit text-success cursor-pointer"></i>
                                 </td>
                                 <td>{{currentUser.currency}} {{formatNumber(detail.Total_price, 2)}}</td>
@@ -563,11 +563,11 @@
 
                <!-- Product -->
                 <b-col md="12" class="mt-2 mb-2">
-                 
+
                   <div id="autocomplete" class="autocomplete">
-                    <input 
+                    <input
                      :placeholder="$t('Scan_Search_Product_by_Code_Name')"
-                      @input='e => search_input = e.target.value' 
+                      @input='e => search_input = e.target.value'
                       @keyup="search(search_input)"
                       @focus="handleFocus"
                       @blur="handleBlur"
@@ -958,7 +958,7 @@
                       >{{parseFloat(payment.received_amount - payment.amount).toFixed(2)}}</p>
                     </b-col>
 
-                    
+
                   </b-row>
                 </b-col>
                  <b-col md="6">
@@ -1000,7 +1000,7 @@
                 </b-col>
               </b-row>
               <b-row class="mt-4">
-               
+
                   <!-- Payment choice -->
                   <b-col lg="6" md="6" sm="12">
                     <validation-provider name="Payment choice" :rules="{ required: true}">
@@ -1062,11 +1062,11 @@
                                 <td>
                                    <b-button variant="outline-primary" @click="selectCard(card)" v-if="!isSelectedCard(card) && card_id != card.card_id">
                                       <span>
-                                        <i class="i-Drag-Up"></i> 
+                                        <i class="i-Drag-Up"></i>
                                         Use This
                                       </span>
                                     </b-button>
-                                     <i v-if="isSelectedCard(card) || card_id == card.card_id" class="i-Yes" style=" font-size: 20px; "></i> 
+                                     <i v-if="isSelectedCard(card) || card_id == card.card_id" class="i-Yes" style=" font-size: 20px; "></i>
                                 </td>
                               </tr>
                             </tbody>
@@ -1091,7 +1091,7 @@
                         </div>
                      </b-card>
                   </b-col>
-               
+
 
 
                     <!-- payment Note -->
@@ -1243,7 +1243,7 @@
 <script>
 import NProgress from "nprogress";
 import { mapActions, mapGetters } from "vuex";
-import vueEasyPrint from "vue-easy-print";
+// import vueEasyPrint from "vue-easy-print";
 import VueBarcode from "vue-barcode";
 import FlagIcon from "vue-flag-icon";
 import Util from "./../../../utils";
@@ -1435,7 +1435,7 @@ export default {
       return card => this.selectedCard === card;
     },
 
-    
+
 
   },
   mounted() {
@@ -1448,7 +1448,7 @@ export default {
     logoutUser() {
       this.$store.dispatch("logout");
     },
-    
+
      handleFocus() {
       this.focused = true
     },
@@ -1488,7 +1488,7 @@ export default {
                 this.submit_showing_credit_card = false;
             });
 
-         
+
         }else{
           this.hasSavedPaymentMethod = false;
           this.useSavedPaymentMethod = false;
@@ -1677,7 +1677,7 @@ export default {
             }else{
               this.CreatePOS();
             }
-       
+
         }
       });
     },
@@ -2008,7 +2008,7 @@ export default {
         NProgress.done();
         this.makeToast("danger", this.$t("InvalidData"), this.$t("Failed"));
       } else {
-        
+
         axios
           .post("pos/create_pos", {
             client_id: this.sale.client_id,
@@ -2229,7 +2229,7 @@ export default {
       this.CaclulTotal();
       this.$forceUpdate();
     },
-  
+
     //---------- keyup OrderTax
     keyup_OrderTax() {
       if (isNaN(this.sale.tax_rate)) {
@@ -2275,7 +2275,7 @@ export default {
             this.$t("Warning")
           );
           this.payment.amount = 0;
-        } 
+        }
         else if (this.payment.amount > this.GrandTotal) {
           this.makeToast(
             "warning",
@@ -2290,7 +2290,7 @@ export default {
     Verified_Received_Amount() {
       if (isNaN(this.payment.received_amount)) {
         this.payment.received_amount = 0;
-      } 
+      }
     },
     //-----------------------------------Delete Detail Product ------------------------------\\
     delete_Product_Detail(id) {
@@ -2406,7 +2406,7 @@ export default {
         );
       }
     },
-   
+
     //---------------------------------- Check if Product Exist in Order List ---------------------\\
     Check_Product_Exist(product, id) {
 

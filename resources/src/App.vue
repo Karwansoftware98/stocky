@@ -50,7 +50,6 @@ methods:{
 },
 
  beforeMount() {
-  
     // if(this.isAuthenticated){
         this.refreshUserPermissions();
         setTimeout(() => this.Loading= true, 300);

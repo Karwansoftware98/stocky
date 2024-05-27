@@ -189,7 +189,7 @@
 
             <b-card class="mt-3">
               <b-row>
-              
+
                  <!-- type -->
 
                 <b-col md="6" class="mb-2" v-if="product.type == 'is_single'">
@@ -420,7 +420,7 @@
                 </div>
               </b-row>
             </b-card>
-           
+
             <b-card class="mt-3">
               <b-row>
                 <!-- Product_Has_Imei_Serial_number -->
@@ -461,7 +461,7 @@
               <div class="card-body">
                 <b-row class="form-group">
                   <b-col md="12 mb-5">
-                    <div
+                    <!-- <div
                       id="my-strictly-unique-vue-upload-multiple-image"
                       class="d-flex justify-content-center"
                     >
@@ -479,7 +479,7 @@
                       idUpload="myIdUpload"
                       :showEdit="false"
                       />
-                    </div>
+                    </div> -->
                   </b-col>
                 </b-row>
               </div>
@@ -498,7 +498,6 @@
 </template>
 
 <script>
-import VueUploadMultipleImage from "vue-upload-multiple-image";
 import VueTagsInput from "@johmun/vue-tags-input";
 import NProgress from "nprogress";
 
@@ -564,7 +563,7 @@ export default {
             (Math.pow(10, 8) - Math.pow(10, 7) - 1)
       );
     },
-    
+
     //------------- Submit Validation Update Product
     Submit_Product() {
       this.$refs.Edit_Product.validate().then(success => {
@@ -624,7 +623,7 @@ export default {
               "Please Enter the Variant",
               this.$t("Warning")
             );
-            
+
           }
       }
     },
@@ -637,7 +636,7 @@ export default {
       }
     },
 
-   
+
 
     //------ event upload Image Success
     uploadImageSuccess(formData, index, fileList, imageArray) {
@@ -695,7 +694,7 @@ export default {
 
     //------------------------------ Update Product ------------------------------\\
     Update_Product() {
-      
+
       NProgress.start();
       NProgress.set(0.1);
       var self = this;
@@ -712,7 +711,7 @@ export default {
       Object.entries(self.product).forEach(([key, value]) => {
           self.data.append(key, value);
       });
-                
+
       //append array variants
       if (self.variants.length) {
           for (var i = 0; i < self.variants.length; i++) {

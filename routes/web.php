@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Storage;
 
 //------------------------------------------------------------------\\
 
+Route::get('/', function () {
+   return view('welcome');
+});
 Route::post('/login', [
     'uses' => 'Auth\LoginController@login',
     'middleware' => 'Is_Active',
@@ -24,6 +27,7 @@ Route::post('/login', [
 Route::get('password/find/{token}', 'PasswordResetController@find');
 
 //------------------------------------------------------------------\\
+
 
 $installed = Storage::disk('public')->exists('installed');
 
@@ -122,7 +126,7 @@ Route::group(['middleware' => ['auth', 'Is_Active']], function () {
 
 
     });
-    
+
     Auth::routes([
         'register' => false,
     ]);

@@ -15,9 +15,9 @@
         @on-search="onSearch"
         :search-options="{
         enabled: true,
-        placeholder: $t('Search_this_table'),  
+        placeholder: $t('Search_this_table'),
       }"
-        :select-options="{ 
+        :select-options="{
           enabled: true ,
           clearSelectionText: '',
         }"
@@ -149,7 +149,7 @@
                   v-slot="validationContext"
                 >
                     <b-form-group :label="$t('start_date') + ' ' + '*'">
-                        <Datepicker id="start_date" name="start_date" :placeholder="$t('Enter_Start_date')" v-model="leave.start_date" 
+                        <Datepicker id="start_date" name="start_date" :placeholder="$t('Enter_Start_date')" v-model="leave.start_date"
                             input-class="form-control back_important" format="yyyy-MM-dd"  @closed="leave.start_date=formatDate(leave.start_date)">
                         </Datepicker>
                         <b-form-invalid-feedback id="start_date-feedback">{{ validationContext.errors[0] }}</b-form-invalid-feedback>
@@ -165,7 +165,7 @@
                   v-slot="validationContext"
                 >
                     <b-form-group :label="$t('Finish_Date')">
-                        <Datepicker id="end_date" name="end_date" :placeholder="$t('Enter_Finish_date')" v-model="leave.end_date" 
+                        <Datepicker id="end_date" name="end_date" :placeholder="$t('Enter_Finish_date')" v-model="leave.end_date"
                             input-class="form-control back_important" format="yyyy-MM-dd"  @closed="leave.end_date=formatDate(leave.end_date)">
                         </Datepicker>
                         <b-form-invalid-feedback id="end_date-feedback">{{ validationContext.errors[0] }}</b-form-invalid-feedback>
@@ -241,7 +241,7 @@
 
 <script>
 import NProgress from "nprogress";
-import Datepicker from 'vuejs-datepicker';
+import Datepicker from 'vue3-datepicker'
 
 export default {
   metaInfo: {
@@ -273,7 +273,7 @@ export default {
       companies:[],
       departments:[],
       leave_types:[],
-      leaves: [], 
+      leaves: [],
       leave: {
           company_id: "",
           department_id: "",
@@ -286,7 +286,7 @@ export default {
           attachment:"",
           half_day:"",
           status:"",
-      }, 
+      },
     };
   },
 
@@ -471,7 +471,7 @@ export default {
       this.reset_Form();
       this.editmode = false;
       this.Get_Data_Create();
-      
+
     },
 
    //------------------------------ Show Modal (Update Leave) -------------------------------\\
@@ -481,7 +481,7 @@ export default {
         this.Get_Data_Edit(leave.id);
     },
 
-     
+
      Selected_Employee(value) {
                 if (value === null) {
                     this.leave.employee_id = "";
@@ -521,7 +521,7 @@ export default {
                 this.Get_employees_by_department(value);
             },
 
-       
+
               //---------------------- Get_departments_by_company ------------------------------\\
             Get_departments_by_company(value) {
             axios
@@ -530,7 +530,7 @@ export default {
             },
 
             //---------------------- Get_employees_by_department ------------------------------\\
-            
+
             Get_employees_by_department(value) {
                 axios
                 .get("/get_employees_by_department?id=" + value)
@@ -538,7 +538,7 @@ export default {
             },
 
 
-            
+
              //---------------------- Get_Data_Create  ------------------------------\\
              Get_Data_Create() {
                 axios
@@ -549,7 +549,7 @@ export default {
                         this.$bvModal.show("New_Modal_Leave");
                     })
                     .catch(error => {
-                       
+
                     });
             },
 
@@ -567,7 +567,7 @@ export default {
                         this.$bvModal.show("New_Modal_Leave");
                     })
                     .catch(error => {
-                       
+
                     });
             },
 
@@ -610,7 +610,7 @@ export default {
 
     //------------------------------- Create leave ------------------------\\
     Create_Leave() {
-      
+
       var self = this;
         self.SubmitProcessing = true;
         self.data.append("company_id", self.leave.company_id);

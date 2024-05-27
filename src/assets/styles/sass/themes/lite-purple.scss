@@ -86,12 +86,8 @@ $theme-colors: (
   gray-900: $gray-900,
   dark: $dark
 ) !default;
-@import "~bootstrap-vue/dist/bootstrap-vue.css";
-@import "~vue-good-table/dist/vue-good-table.css";
-@import "~nprogress/nprogress.css";
 @import "../../../fonts/iconsmind/iconsmind.css";
 @import "../../vendor/bootstrap/bootstrap.scss";
-// @import "~bootstrap/scss/bootstrap.scss";
 @import "../bootstrap-rtl.scss";
 
 @import "../globals/globals.scss";

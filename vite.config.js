@@ -5,10 +5,7 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig({
     plugins: [
         laravel({
-            input: [
-                'src/login.js',
-                'src/main.js',
-            ],
+            input: ["resources/src/login.js", "resources/src/main.js"],
             refresh: true,
         }),
         vue({
@@ -20,4 +17,9 @@ export default defineConfig({
             },
         }),
     ],
+    resolve: {
+        alias: {
+            vue: "vue/dist/vue.esm-bundler.js",
+        },
+    },
 });

@@ -379,7 +379,7 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import ECharts from "vue-echarts/components/ECharts.vue";
+import ECharts from "vue-echarts";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 
@@ -507,7 +507,7 @@ export default {
           tdClass: "text-left",
           thClass: "text-left"
         },
-        
+
         {
           label: this.$t("Total"),
           field: "GrandTotal",
@@ -585,7 +585,7 @@ export default {
           tdClass: "text-left",
           thClass: "text-left"
         },
-       
+
         {
           label: this.$t("Total"),
           field: "GrandTotal",
@@ -656,7 +656,7 @@ export default {
           tdClass: "text-left",
           thClass: "text-left"
         },
-        
+
         {
           label: this.$t("Total"),
           field: "GrandTotal",

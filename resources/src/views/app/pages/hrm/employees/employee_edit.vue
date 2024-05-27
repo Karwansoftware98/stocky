@@ -73,7 +73,7 @@
                <!-- Birth_date  -->
                 <b-col lg="6" md="6" sm="12" class="mb-2">
                   <b-form-group :label="$t('Birth_date')">
-                      <Datepicker id="birth_date" name="birth_date" :placeholder="$t('Enter_Birth_date')" v-model="employee.birth_date" 
+                      <Datepicker id="birth_date" name="birth_date" :placeholder="$t('Enter_Birth_date')" v-model="employee.birth_date"
                           input-class="form-control back_important" format="yyyy-MM-dd"  @closed="employee.birth_date=formatDate(employee.birth_date)">
                       </Datepicker>
                     </b-form-group>
@@ -115,7 +115,7 @@
                 <!-- joining_date  -->
                  <b-col lg="6" md="6" sm="12" class="mb-2">
                     <b-form-group :label="$t('joining_date')">
-                        <Datepicker id="joining_date" name="joining_date" :placeholder="$t('Enter_joining_date')" v-model="employee.joining_date" 
+                        <Datepicker id="joining_date" name="joining_date" :placeholder="$t('Enter_joining_date')" v-model="employee.joining_date"
                             input-class="form-control back_important" format="yyyy-MM-dd"  @closed="employee.joining_date=formatDate(employee.joining_date)">
                         </Datepicker>
                     </b-form-group>
@@ -124,7 +124,7 @@
                   <!-- Leaving_Date  -->
                  <b-col lg="6" md="6" sm="12" class="mb-2">
                     <b-form-group :label="$t('Leaving_Date')">
-                        <Datepicker id="leaving_date" name="leaving_date" :placeholder="$t('Enter_Leaving_Date')" v-model="employee.leaving_date" 
+                        <Datepicker id="leaving_date" name="leaving_date" :placeholder="$t('Enter_Leaving_Date')" v-model="employee.leaving_date"
                             input-class="form-control back_important" format="yyyy-MM-dd"  @closed="employee.leaving_date=formatDate(employee.leaving_date)">
                         </Datepicker>
                     </b-form-group>
@@ -160,7 +160,7 @@
                     ></b-form-input>
                     </b-form-group>
                 </b-col>
-             
+
                 <!-- Company -->
                 <b-col md="6" class="mb-2">
                   <validation-provider name="Company" :rules="{ required: true}">
@@ -258,7 +258,7 @@
 
 <script>
 import NProgress from "nprogress";
-import Datepicker from 'vuejs-datepicker';
+import Datepicker from 'vue3-datepicker'
 
 export default {
   metaInfo: {
@@ -269,7 +269,7 @@ export default {
   },
   data() {
     return {
-      
+
       isLoading: true,
       SubmitProcessing:false,
       data: new FormData(),
@@ -278,7 +278,7 @@ export default {
       designations: [],
       office_shifts: [],
       roles: {},
-      employee: {}, 
+      employee: {},
     };
   },
 
@@ -381,7 +381,7 @@ export default {
             }
         },
 
-        
+
         Selected_Office_shift(value) {
             if (value === null) {
                 this.employee.office_shift_id = "";
@@ -389,7 +389,7 @@ export default {
         },
 
 
-        
+
         //---------------------- Get_departments_by_company ------------------------------\\
         Get_departments_by_company(value) {
         axios
